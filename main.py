@@ -1,4 +1,14 @@
-from data import MENU, resources
+from data import MENU, resources, logo, latte_art
+from os import system, name
+
+
+def clear():
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
 
 def get_coffee_bill(menu_item):
@@ -31,6 +41,7 @@ def get_payment():
 
 
 while True:
+    print(logo)
     payment_received = False
     your_order = ""
     coffee_received = False
@@ -98,6 +109,8 @@ while True:
                     print("Sorry that's not enough money. Money refunded.")
                     coffee_received = False
             if coffee_received and missing_ingredients == 0:
+                print(latte_art)
                 print(f"Here is your {coffee_command} ☕️. Enjoy!")
-
+                # https://ascii.co.uk/art
     response = input("type 'y' to continue")
+    clear()
